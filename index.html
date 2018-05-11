@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Disney Guess the Character!</title>
@@ -12,21 +13,33 @@
     
     <div id="game">
 
-        <h1>Disney Guess the Character!</h1>
+        <div class="row">
+            <div class="col-12">
+                <img id="disneyLogo" src="https://upload.wikimedia.org/wikipedia/commons/1/19/Disney-logo.jpg" alt="Disney Logo">
+            </div>
 
-        <p>Press any key to begin guessing!</p>
+            <div class="col-12 instructions">
+                <h1>Guess the Character!</h1>
+            </div>
 
-        <p id="numOfWins">Wins: </p>
+            <div class="col-12 instructions">
+                <p>Press any key to begin guessing!</p>
+            </div>
+        </div>
 
-        <h2>Current Word</h2>
+        <div class="row">
+            <div class="col-9">
+                <p id="numOfWins">Wins: </p>
+                <h2>Current Word</h2>
+                <p id="currentWord"></p>
+                <p id="guessesLeft"></p>
+                <p id="lettersGuessed">Letters already guessed: </p>
+            </div>
 
-        <p id="currentWord"></p>
-
-        <p id="guessesLeft"></p>
-
-        <p id="lettersGuessed">Letters already guessed: </p>
-
-        <p id="announcement"></p>
+            <div class="col-3">
+                <img id="charImage">
+            </div>
+        </div>
 
         
     </div>

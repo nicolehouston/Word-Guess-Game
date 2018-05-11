@@ -1,3 +1,20 @@
+body {
+    width: 900px;
+    margin: auto;
+}
+
+#disneyLogo {
+    width: 300px;
+    height: auto;
+}
+
+#game {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+}
+
 #currentWord {
     letter-spacing: 10px;
 }
+
