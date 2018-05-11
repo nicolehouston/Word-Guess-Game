@@ -1,32 +1,54 @@
 // Create an array to store the words that users must guess.
-var words = ["taliyah", "yasuo", "sejuani"];
-var currentWord = words[0];
+var words = ["t a l i y a h", "y a s u o", "s e j u a n i"];
 
-// Create variable to keep track of remaining guesses and number of wins.
+// Define variables.
+var wordIndex = 0;
 var remainingGuesses = 12;
 var wins = 0;
 var notInWord = [];
+var currentWord = '';
+var wordAsArray = [];
+var wordToGuess = makeArray(words[wordIndex]);
 
+// FUNCTIONS
+// =========================================================================================
 // Create function that takes a word and replaces each letter to be a blank.
 function displayBlanks(string) {
     for (i = 0; i < string.length; i++) {
         string = string.replace(string.charAt(i), "_");
     }
-        var result = string;
-        return result;
+        return string;
 }
+
+function makeArray(string) {
+    string = string.split(" ");
+    return string;
+}
+
+function makeString(array) {
+    array = array.join(" ");
+    return array;
+}
+
+function displayCurrentWord(string) {
+    document.getElementById("currentWord").innerHTML = string;
+} 
 
 // Start the game function
 function startGame(string){
-    var wordAsBlanks = displayBlanks(string);
-    // Write the blanks in the html for the first word and set remaining guesses to 12.
-    document.getElementById("currentWord").innerHTML = wordAsBlanks;
+    wordAsArray = makeArray(string);
+    wordAsArray.fill("_", 0, wordAsArray.length);
+    currentWord = makeString(wordAsArray);
+    displayCurrentWord(currentWord);
     document.getElementById("guessesLeft").innerHTML = "Guesses remaining: " + remainingGuesses;
+    
 }
 
 // Play Game
-// ========================================================
-startGame(currentWord);
+// =============================================================================
+startGame(words[wordIndex]);
+
+
 
 
 
@@ -36,14 +58,19 @@ document.onkeyup = function (event) {
 // Store the user's guess of a letter in a variable.
 var userGuess = event.key.toLowerCase();
 
-    if(userGuess !== currentWord.charAt(i)) {
-        remainingGuesses --;
-        document.getElementById("guessesLeft").innerHTML = "Guesses remaining: " + remainingGuesses;
-        notInWord.push(userGuess);
-        document.getElementById("lettersGuessed").innerHTML = "Incorrect Guesses: " + notInWord;
-     }
-        
-  
+for(i = 0; i < wordToGuess.length; i++){
+    if (userGuess === wordToGuess[i]) {
+        wordAsArray = makeArray(currentWord);
+        wordAsArray.splice(i, 1, userGuess);
+        currentWord = makeString(wordAsArray);
+        displayCurrentWord(currentWord);
+    }
+} 
 
+    if (wordToGuess.indexOf(userGuess) === -1) {
+        notInWord.push(userGuess);
+        console.log(notInWord);
+        document.getElementById("lettersGuessed").innerHTML = notInWord;
+    }
 }
 
