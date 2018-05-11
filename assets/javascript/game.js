@@ -1,5 +1,6 @@
 // Create an array to store the words that users must guess.
 var words = ["a l a d d i n", "s i m b a", "r a p u n z e l"];
+var images = ["https://vignette.wikia.nocookie.net/disney/images/e/eb/Aladdin_Pose.png/revision/latest?cb=20170912124813", "http://pngimg.com/uploads/lion_king/lion_king_PNG69.png", "https://vignette.wikia.nocookie.net/disney/images/8/82/Rapunzel_pose.png/revision/latest?cb=20160209032533"];
 
 // Define variables.
 var wordIndex = 0;
@@ -90,6 +91,8 @@ document.onkeyup = function (event) {
 
     // Checks to see if all the letters have been correctly guessed and then changes the word.
     if ((currentWord === makeString(wordToGuess)) && wordIndex < words.length) {
+        document.getElementById("charImage").src = images[wordIndex];
+        document.getElementById("charName").innerHTML = words[wordIndex];
         wins ++;
         document.getElementById("numOfWins").innerHTML = "Wins: " + wins;
         wordIndex ++;
