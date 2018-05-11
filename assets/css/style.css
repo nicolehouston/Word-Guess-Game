@@ -1,17 +1,62 @@
 body {
     width: 900px;
     margin: auto;
+    background-color: #f2f2f2;
 }
 
 #disneyLogo {
     width: 300px;
     height: auto;
+    border: solid 2px;
+}
+
+h1 {
+    font-size: 30px;
+}
+
+.words {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+h2 {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 30px;
+    text-decoration: underline;
+    color: #b73535;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 #game {
     width: 90%;
     margin: auto;
     text-align: center;
+}
+
+.instructions {
+    margin: 10px 10px 20px 10px;
+    font-weight: bold;
+}
+
+.display {
+    border: dashed 2px #00264d;
+    padding: 20px;
+    background-color: white;
+    
+}
+
+#currentWord {
+    border: solid 3px #00264d;
+    font-size: 40px;
+}
+
+#charImage {
+    width: 100%;
+    height: auto;
+    margin: auto;
 }
 
 #currentWord {

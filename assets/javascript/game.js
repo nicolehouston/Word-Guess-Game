@@ -3,7 +3,7 @@ var words = ["a l a d d i n", "s i m b a", "r a p u n z e l"];
 
 // Define variables.
 var wordIndex = 0;
-var remainingGuesses = 12;
+var remainingGuesses = 8;
 var wins = 0;
 var notInWord = [];
 var currentWord = '';
@@ -63,6 +63,7 @@ document.onkeyup = function (event) {
 
     // Store the user's guess of a letter in a variable.
     var userGuess = event.key.toLowerCase();
+    var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
     // Checks to see if userGuess equals a letter in the word to guess and then displays revealed letters.
     for(i = 0; i < wordToGuess.length; i++){
@@ -75,7 +76,7 @@ document.onkeyup = function (event) {
     } 
 
     // If a guessed letter is not in the word, then the letter gets added to the "letters guessed" list and remaining guesses decreases by one
-    if ((wordToGuess.indexOf(userGuess) === -1) && (notInWord.indexOf(userGuess) === -1)) {
+    if ((wordToGuess.indexOf(userGuess) === -1) && (notInWord.indexOf(userGuess) === -1) && (alphabet.indexOf(userGuess) !== -1)) {
         remainingGuesses --;
         document.getElementById("guessesLeft").innerHTML = "Guesses remaining: " +remainingGuesses;
         notInWord.push(userGuess);
@@ -88,16 +89,19 @@ document.onkeyup = function (event) {
     }
 
     // Checks to see if all the letters have been correctly guessed and then changes the word.
-    if (wordIndex >= words.length) {
-        document.querySelector("body").innerHTML = "Congratulations! You have correctly guessed all of the characters!";
-    }
-    else if ((currentWord === makeString(wordToGuess)) && wordIndex < words.length) {
+    if ((currentWord === makeString(wordToGuess)) && wordIndex < words.length) {
         wins ++;
         document.getElementById("numOfWins").innerHTML = "Wins: " + wins;
         wordIndex ++;
+        remainingGuesses = 8;
+        document.getElementById("guessesLeft").innerHTML = "Guesses remaining: " +remainingGuesses;
+        notInWord = [];
+        document.getElementById("lettersGuessed").innerHTML = "Letters already guessed: " + notInWord;
         changeWord(words[wordIndex]);   
     }
-    
+    else if (wordIndex >= words.length) {
+        document.querySelector("body").innerHTML = "Congratulations! You have correctly guessed all of the characters!";
+    }
     
 }
 
