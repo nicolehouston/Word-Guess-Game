@@ -84,7 +84,7 @@ document.onkeyup = function (event) {
         document.getElementById("lettersGuessed").innerHTML = "Letters already guessed: " + notInWord;
 
         if (remainingGuesses === 0) {
-            document.querySelector("body").innerHTML = "Sorry, you are out of guesses! Better luck next time!";
+            document.querySelector("body").innerHTML = "<p id='loseScreen'>Sorry, you are out of guesses! Better luck next time!</p>";
             
         }
     }
@@ -100,10 +100,11 @@ document.onkeyup = function (event) {
         document.getElementById("guessesLeft").innerHTML = "Guesses remaining: " +remainingGuesses;
         notInWord = [];
         document.getElementById("lettersGuessed").innerHTML = "Letters already guessed: " + notInWord;
-        changeWord(words[wordIndex]);   
+        changeWord(words[wordIndex]); 
+          
     }
     else if (wordIndex >= words.length) {
-        document.querySelector("body").innerHTML = "Congratulations! You have correctly guessed all of the characters!";
+        document.querySelector("body").innerHTML = "<p id='winScreen'>Congratulations! You have correctly guessed all of the characters!</p>";
     }
     
 }
